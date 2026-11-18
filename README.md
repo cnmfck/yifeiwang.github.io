@@ -1,4 +1,4 @@
-# Yifei Wang (王奕霏) — Personal Website / 个人网站
+# Yifei Wang — Personal Website / 个人网站
 
 **Version 版本: v1.2 (2026-11-18)**
 
@@ -111,15 +111,8 @@ Each update gets a new number (v1.0 → v1.1 for content and small fixes, v2.0 f
 4. The version comment at the top of `css/style.css` and `js/main.js`
 5. `<lastmod>` dates in `sitemap.xml`
 
-## 8. Draft copy to review 需要本人确认的文字
 
-All English and Chinese copy was edited to read naturally (no stock phrases, no translated-sounding Chinese). A few first-person lines are still drafts written for you; change them to your own words if they don't sound like you:
-中英文文案都已改写得更自然。下面几句第一人称文字是替你写的草稿，不像你的口吻就改掉：
-- Home: the cover paragraph and the two At a glance paragraphs 首页封面简介和"概览"两段
-- Portfolio: cosplay opening sentence and character list; makeup first sentence; film writing first sentence 作品页 cosplay 开头和角色列表、化妆第一句、电影写作第一句
-- UIBE start date: the CV says Sep 2024. Confirm it before publishing. UIBE 起始时间请核对。
-
-## 9. Animations 动画效果
+## 8. Animations 动画效果
 
 All motion lives in `js/main.js` (section 6) and the "MOTION" block at the end of `css/style.css`. Visitors whose device is set to reduce motion get the same content with no animation.
 所有动画在 `js/main.js` 第 6 部分和 `css/style.css` 末尾的 MOTION 区块。设备开启"减少动态效果"的访客会看到相同内容、没有动画。
@@ -139,7 +132,7 @@ All motion lives in `js/main.js` (section 6) and the "MOTION" block at the end o
 | Reading progress line 阅读进度条 | header 页头 | automatic 自动 |
 | Page-to-page transition 换页过渡 | all pages (Chrome, Edge, Safari 18.2+) | automatic 自动 |
 
-## 10. Tech notes 技术说明
+## 9. Tech notes 技术说明
 
 - No build step, no libraries. Works when opened from any static host. 无需构建、无第三方库。
 - Fonts are self-hosted (Bodoni Moda, Schibsted Grotesk, Mrs Saint Delafield; SIL Open Font License in `assets/fonts/`). Chinese text uses each device's system fonts, so the site loads without Google services. 字体自托管，中文用系统字体，不依赖谷歌服务。
