@@ -1,1 +1,147 @@
-# yifeiwang.github.io
+# Yifei Wang (王奕霏) — Personal Website / 个人网站
+
+**Version 版本: v1.2 (2026-11-18)**
+
+A bilingual (English / 中文) portfolio site for graduate applications, built with plain HTML, CSS and JavaScript and hosted on GitHub Pages with a custom domain.
+中英双语个人作品集网站，用于研究生申请。纯 HTML、CSS、JavaScript 编写，部署在 GitHub Pages 并绑定自有域名。
+
+---
+
+## 1. Pages 页面
+
+| File 文件 | Page 页面 | Content 内容 |
+|---|---|---|
+| `index.html` | Home 首页 | Cover with a four-line Highlights list, keyword ticker, At a glance (short intro, numbers, education, coursework, interests, languages), Selected work, Skills and languages 封面（含四条代表经历）、关键词滚动条、概览（简介、数字、学业、课程、兴趣、语言）、作品精选、技能与语言 |
+| `timeline.html` | Timeline 经历 | Every résumé entry since 2022 with filters and a scroll-drawn line, then skills and languages 简历上的全部经历，可筛选，时间轴随滚动画线，末尾附技能与语言 |
+| `portfolio.html` | Portfolio 作品 | 10 projects with filters; each opens a detail window with facts and photos 10 个作品，可筛选，点开有详情和图集 |
+| `contact.html` | Contact 联系 | Statement on the left; contact card on the right with preferred email, Queen’s email, phone, LinkedIn and location, each with a copy button 左侧标题，右侧联系卡片：常用邮箱、学校邮箱、电话、LinkedIn、所在地，可一键复制 |
+| `404.html` | Not found 404 页 | Magazine "errata" page: a dashed cut-out with the 404, a link list of all pages, and an editor’s note with your photo and email. Works at any missing address and when opened locally. 杂志"勘误"风格：虚线剪切框里的 404、全站页面目录、带照片和邮箱的编者按；任何不存在的地址都能正常显示，本地打开也正常 |
+
+## 2. Folder structure 目录结构
+
+```
+yifei-wang-site/
+├── index.html  timeline.html  portfolio.html  contact.html  404.html
+├── css/style.css            all styles 全部样式
+├── js/main.js               language switch, filters, detail window, copy buttons, animations 语言切换、筛选、详情弹窗、复制按钮、动画
+├── assets/
+│   ├── fonts/               self-hosted fonts: Bodoni Moda, Schibsted Grotesk, Mrs Saint Delafield (SIL OFL) 自托管字体
+│   ├── img/
+│   │   ├── portrait/        portrait.jpg, your photo (cover and 404 page) 个人照片（首页封面和 404 页使用）
+│   │   ├── portfolio/       project photos go here 作品照片放这里
+│   │   ├── placeholders/    art shown until a photo exists 没有照片时显示的占位图
+│   │   ├── favicon.svg, favicon-32.png, apple-touch-icon.png, icon-192/512.png
+│   │   └── og-cover.png     preview image for social sharing 分享预览图
+├── sitemap.xml  robots.txt  site.webmanifest
+├── CNAME                    custom domain for GitHub Pages 自定义域名
+├── .nojekyll                tells GitHub Pages to serve files as-is 让 GitHub Pages 直接发布文件
+├── VERSION  CHANGELOG.md  README.md
+```
+
+## 3. Deploy to GitHub Pages 部署到 GitHub Pages
+
+1. **Domain 域名:** already set to `yifeiwang.cc` in `CNAME`, `sitemap.xml`, `robots.txt` and every page's `<head>`. 域名已全部设置为 `yifeiwang.cc`。
+2. Create a GitHub repository (public) and upload **the contents of this folder** to the repository root (not the folder itself).
+   新建一个公开仓库，把本文件夹**里面的所有文件**上传到仓库根目录（不要多套一层文件夹）。`.nojekyll` 是隐藏文件，也要上传。
+3. Repository → **Settings → Pages** → Source: *Deploy from a branch* → Branch `main`, folder `/ (root)` → Save.
+4. In the same page, type your domain under **Custom domain** and save. Tick **Enforce HTTPS** once it becomes available.
+   在同一页面的 Custom domain 填入域名并保存；证书生成后勾选 Enforce HTTPS。
+5. At your domain registrar, add DNS records 在域名服务商处添加解析:
+   | Type | Host | Value |
+   |---|---|---|
+   | A | @ | 185.199.108.153 |
+   | A | @ | 185.199.109.153 |
+   | A | @ | 185.199.110.153 |
+   | A | @ | 185.199.111.153 |
+   | CNAME | www | `YOUR-GITHUB-USERNAME.github.io` |
+   DNS can take up to a day to spread. 解析生效可能需要几小时到一天。
+6. Submit `https://yifeiwang.cc/sitemap.xml` in Google Search Console (and Bing Webmaster Tools) so the site gets indexed.
+   在 Google Search Console 提交 sitemap，方便被搜索引擎收录。
+
+## 4. Editing text 修改文字
+
+Every bilingual sentence is written twice, side by side:
+每句双语文字都并排写两遍：
+
+```html
+<span data-lang="en">View portfolio</span><span data-lang="zh">查看作品</span>
+```
+
+Edit both. The button in the header switches languages; the choice is remembered and added to links as `?lang=zh`. English is the default.
+两种语言都要改。页头按钮切换语言，选择会被记住，并以 `?lang=zh` 带到站内链接。默认英文。
+
+Dropdown options and placeholder text keep both languages in attributes (`data-text-en` / `data-text-zh`, `data-placeholder-en` / `data-placeholder-zh`).
+下拉选项和输入框提示文字的双语写在属性里。
+
+## 5. Adding photos 添加照片
+
+Drop JPG files with **exactly these names** into the folders below. No code changes needed: until a file exists, the page shows the matching placeholder art.
+把 JPG 照片按**下面的文件名**放进对应文件夹即可，无需改代码；没有照片时会自动显示占位图。
+
+| File 文件名 | Used for 用途 | Shape 比例 |
+|---|---|---|
+| `assets/img/portrait/portrait.jpg` | Home cover and 404 editor’s note (already added) 首页封面和 404 页编者按（已放入） | any; cropped to 4:5 with the face kept near the top 任意比例，裁成 4:5 时保留脸部 |
+| `assets/img/portfolio/qcssa-01.jpg` … `qcssa-03.jpg` | QCSSA campaigns (01 is the cover) QCSSA 宣传 | 4:5 or 16:10 |
+| `assets/img/portfolio/events-01.jpg`, `events-02.jpg` | Event hosting 活动主持 | 4:3 |
+| `assets/img/portfolio/uibe-01.jpg` | UIBE outreach UIBE 推广 | 4:5 |
+| `assets/img/portfolio/cas-research.jpg` | CAS research 中科院研究 | 16:10 |
+| `assets/img/portfolio/recall-01.jpg` | Recall study chart 回忆实验图表 | 4:5 |
+| `assets/img/portfolio/writing-01.jpg` | Film writing 电影写作 | 16:10 |
+| `assets/img/portfolio/cosplay-01.jpg` … `cosplay-06.jpg` | Cosplay (01 Kita Ikuyo, 02 Makima, 03 Power, 04 Reze, 05 Hatsune Miku, 06 Misa Amane) | 4:5 |
+| `assets/img/portfolio/makeup-01.jpg` … `makeup-03.jpg` | Makeup 化妆 | 4:3 or 4:5 |
+| `assets/img/portfolio/deadline-01.jpg`, `deadline-02.jpg` | DeADline live / rehearsal 乐队演出/排练 | 4:5 |
+| `assets/img/portfolio/speech-01.jpg` | Japanese speech contest 日语演讲 | 4:5 |
+
+Tips: long side about 1600 px, under 400 KB each (compress at squoosh.app). Photos are cropped to fill their frame, so keep faces near the centre. To change a caption, edit the `<figcaption>` in `portfolio.html`.
+建议：长边约 1600 像素，每张 400 KB 以内。照片会裁切填满画框，人物尽量居中。图注在 `portfolio.html` 的 `<figcaption>` 里修改。
+
+## 6. Other edits 其他修改
+
+- **Contact details 联系方式:** edit the `CONTACTS` rows in `contact.html` (each row is one `<li class="cline">`). To add Instagram or X, copy the LinkedIn row and change the label, link and text. 在 `contact.html` 修改联系卡片，每一行是一个 `<li class="cline">`；要加 Instagram 或 X，复制 LinkedIn 那行改文字和链接即可。
+- **Résumé 简历:** there is no separate PDF on the site on purpose. Every item on the graduate CV appears on the pages: education, coursework and interests on Home (About), all roles and projects on Timeline, skills and languages on Home and Timeline. When the résumé changes, update the matching text. 网站不单独提供简历 PDF，简历上的每一项都分布在各页面里；简历更新时同步修改对应文字。
+- **Colours and fonts 颜色字体:** all in the `:root` block at the top of `css/style.css`.
+
+## 7. Versioning 版本规则
+
+Each update gets a new number (v1.0 → v1.1 for content and small fixes, v2.0 for a redesign). When releasing, update:
+每次更新都升级版本号（内容/小修 v1.1，改版 v2.0），同时修改：
+1. `VERSION` and `CHANGELOG.md`
+2. The version comment at the top of every HTML file (generated in `<head>`) 每个页面 `<head>` 里的版本注释
+3. `?v=1.2` after `style.css` and `main.js` in all HTML files (forces browsers to load the new files) 强制浏览器加载新文件
+4. The version comment at the top of `css/style.css` and `js/main.js`
+5. `<lastmod>` dates in `sitemap.xml`
+
+## 8. Draft copy to review 需要本人确认的文字
+
+All English and Chinese copy was edited to read naturally (no stock phrases, no translated-sounding Chinese). A few first-person lines are still drafts written for you; change them to your own words if they don't sound like you:
+中英文文案都已改写得更自然。下面几句第一人称文字是替你写的草稿，不像你的口吻就改掉：
+- Home: the cover paragraph and the two At a glance paragraphs 首页封面简介和"概览"两段
+- Portfolio: cosplay opening sentence and character list; makeup first sentence; film writing first sentence 作品页 cosplay 开头和角色列表、化妆第一句、电影写作第一句
+- UIBE start date: the CV says Sep 2024. Confirm it before publishing. UIBE 起始时间请核对。
+
+## 9. Animations 动画效果
+
+All motion lives in `js/main.js` (section 6) and the "MOTION" block at the end of `css/style.css`. Visitors whose device is set to reduce motion get the same content with no animation.
+所有动画在 `js/main.js` 第 6 部分和 `css/style.css` 末尾的 MOTION 区块。设备开启"减少动态效果"的访客会看到相同内容、没有动画。
+
+| Effect 效果 | Where 位置 | How to use 用法 |
+|---|---|---|
+| Letters rise, pink ink slides into register, photo unveils, script writes itself 字母升起、粉色套印就位、照片揭开、手写字书写 | Home cover 首页封面 | automatic 自动 |
+| Spinning badge, speeds up when scrolling 旋转徽章，滚动时加速 | Home cover 首页封面 | automatic 自动 |
+| Keyword ticker 关键词滚动条 | Home 首页 | hover pauses 悬停暂停 |
+| Headlines rise word by word 标题逐词升起 | all pages 各页 | add `data-split` to a heading 给标题加 `data-split` |
+| Fade-up reveal 淡入上移 | all pages 各页 | add `data-reveal` (optional `style="--d:.1s"` delay) |
+| Script draws in 手写字书写 | all pages 各页 | add `data-reveal="script"` to a `.script` element |
+| Numbers count up 数字滚动 | Home, At a glance 首页概览 | `data-count="20"` on `.stat__num` |
+| Photo drift 照片视差 | Home 首页 | `data-parallax="0.05"` |
+| Line draws and dots light up 时间轴画线、圆点点亮 | Timeline 经历 | automatic 自动 |
+| Cursor turns into an Open/View bubble 鼠标变成"打开/查看"圆圈 | Portfolio, Home cards 作品卡片 | `data-cursor data-cursor-en="Open" data-cursor-zh="打开"` |
+| Reading progress line 阅读进度条 | header 页头 | automatic 自动 |
+| Page-to-page transition 换页过渡 | all pages (Chrome, Edge, Safari 18.2+) | automatic 自动 |
+
+## 10. Tech notes 技术说明
+
+- No build step, no libraries. Works when opened from any static host. 无需构建、无第三方库。
+- Fonts are self-hosted (Bodoni Moda, Schibsted Grotesk, Mrs Saint Delafield; SIL Open Font License in `assets/fonts/`). Chinese text uses each device's system fonts, so the site loads without Google services. 字体自托管，中文用系统字体，不依赖谷歌服务。
+- SEO: canonical URLs, `hreflang` alternates (`?lang=zh`), Open Graph/Twitter cards, JSON-LD `Person` data on the home page, `sitemap.xml`, `robots.txt`.
+- Accessibility: skip link, keyboard-friendly filters and dialog, visible focus, reduced-motion support. 无障碍：跳转链接、键盘可操作、焦点可见、尊重减少动画设置。

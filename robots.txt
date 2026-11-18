@@ -1,0 +1,6 @@
+# Yifei Wang site v1.2
+User-agent: *
+Allow: /
+Disallow: /404.html
+
+Sitemap: https://yifeiwang.cc/sitemap.xml

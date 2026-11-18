@@ -1,0 +1,2 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Photo placeholder">
+<defs><pattern id="d" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="7.0" cy="7.0" r="2" fill="#1e2547"/></pattern></defs><rect width="800" height="1000" fill="#fafaf8"/><circle cx="320" cy="460" r="230" fill="#1e2547"/><circle cx="480" cy="560" r="230" fill="#f0457e" style="mix-blend-mode:multiply"/><rect x="0" y="0" width="800" height="1000" fill="url(#d)" opacity=".18"/></svg>
