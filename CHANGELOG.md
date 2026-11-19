@@ -1,5 +1,15 @@
 # Changelog 更新记录
 
+## v1.9 (2026-11-19)
+
+- Home: Skills and languages moves above Selected work and becomes a dark band: skills in large type grouped by Research, Tools, Communication and Creative, and three languages with level bars. 首页“技能与语言”移到“作品精选”上面，改成深色整栏：技能按研究、工具、传播与组织、创作分组大字排列，三门语言带水平条。
+- Japanese level changed to intermediate everywhere it is listed. 日语水平全站改为中级。
+- Selected work links to “All projects”; the case banner now closes the Home page. 作品精选右上角改为“全部作品”；案例横幅放在首页最后。
+- Filter tabs: counts removed; the selected tab turns red. 筛选标签去掉数量，选中的标签变红。
+- Timeline and Portfolio openers: descriptions removed. Timeline shows outlined years that jump to each year; Portfolio shows four prints that open their projects. 经历和作品页标题右侧的描述删掉：经历页换成可跳转的空心年份，作品页换成四张可点开项目的照片。
+- Counselling course: Seed Plan details, a detail window with the six-case conceptualization project, and a new Portfolio card; Film writing card is now regular width. 心理咨询课程：补充萌芽计划介绍，新增六个案例个案概念化的详情窗口和作品卡片；电影写作卡片改为普通宽度。
+- Timeline: Queen’s Psychology image on the BA entry. 经历页学位条目换上皇后大学心理学系图片。
+
 ## v1.8 (2026-11-18)
 
 - Home cover: the bottom of the “g” in Wang and the italic overhang are no longer clipped. 首页封面：Wang 的 g 下半部和斜体右侧不再被截掉。

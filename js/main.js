@@ -1,6 +1,6 @@
 /* ==========================================================================
    Yifei Wang — personal site
-   Version: v1.8 (2026-11-18)
+   Version: v1.9 (2026-11-18)
    Plain JavaScript, no libraries. Each feature checks that its elements
    exist, so the same file works on every page.
    ========================================================================== */
@@ -305,7 +305,7 @@
 
   /* ------------------------------------------------------------------
      6. Motion
-     Runs for every visitor (since v1.8), with distances kept small.
+     Runs for every visitor (since v1.9), with distances kept small.
      All content is still readable if this script fails.
      ------------------------------------------------------------------ */
   var CJK = /[⺀-鿿豈-﫿＀-￯　-〿]/;

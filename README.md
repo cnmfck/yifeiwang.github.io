@@ -89,8 +89,8 @@ Drop JPG files with **exactly these names** into the folders below. No code chan
 | `assets/img/portfolio/recall-01.jpg` | Immediate Recall Study cover, Timeline, Home research card (already added; 600 px wide, a larger copy would look sharper) 回忆实验封面、经历页、首页研究卡片（已放入，宽 600 像素，有大图会更清晰） | 3:2 |
 | `assets/img/portfolio/qcssa-team-banner.jpg` | QCSSA team with the banner: Timeline (Marketing Officer) and Home media stack (already added) QCSSA 成员和会旗合影：经历页“市场部干事”、首页媒体卡片（已放入） | 3:2 |
 | `assets/img/timeline/upath-booth.jpg` | UPATH outreach booth on Timeline (already added) 经历页 UPATH 宣传摊位（已放入） | 4:3 |
-| **`assets/img/timeline/queens-psychology.jpg`** | **Still needed:** BA (Honours), Psychology on Timeline. Please use a photo of Queen’s in Kingston. **待补：**经历页“心理学荣誉学士”，请用金斯顿皇后大学的照片 | 4:3 |
-| **`assets/img/timeline/counselling-course.jpg`** | **Still needed:** Introductory Counselling Course on Timeline **待补：**经历页“心理咨询入门课程” | 4:3 |
+| `assets/img/timeline/queens-psychology.jpg` | BA (Honours), Psychology on Timeline (already added) 经历页“心理学荣誉学士”（已放入） | 4:3 |
+| `assets/img/portfolio/seed-title.jpg`, `seed-case-1.jpg`, `seed-case-6.jpg` | Counselling course: pages from the phone-interview case document (already added) 心理咨询课程：电话面试案例文档的页面（已放入） | as is 原比例 |
 | **`assets/img/portfolio/uibe-01.jpg`** | **Still needed:** UIBE outreach card and Timeline **待补：**UIBE 推广卡片和经历页 | 4:5 |
 | **`assets/img/portfolio/recall-02.jpg`** | **Still needed:** chart from the recall study report (inside its dialog) **待补：**回忆实验报告里的图表（详情窗口内） | 4:3 |
 | `assets/img/portfolio/writing-01.jpg` | Film writing 电影写作 | 16:10 |
@@ -117,8 +117,8 @@ The 2024 Spring Festival gala recap still has no WeChat link (its card says “N
 
 ### Detail windows 详情窗口
 
-Timeline entries and Portfolio cards open the same window. Each story is written once per page in a hidden `<div class="story-src" id="src-…">`; anything with `data-story="…"` opens it, and `page.html#story-id` opens it directly. Stories shared by both pages: Japanese speech contest, CAS internship, QCSSA events, UIBE outreach, Immediate Recall Study.
-经历页条目和作品卡片打开的是同一个详情窗口。每个故事在页面底部隐藏的 `.story-src` 里写一次，带 `data-story` 的按钮或图片会打开它，网址加 `#故事id` 也能直接打开。两页共用的有：日语比赛、中科院实习、QCSSA 活动、UIBE 推广、即时回忆实验。
+Timeline entries and Portfolio cards open the same window. Each story is written once per page in a hidden `<div class="story-src" id="src-…">`; anything with `data-story="…"` opens it, and `page.html#story-id` opens it directly. Stories shared by both pages: Japanese speech contest, CAS internship, QCSSA events, UIBE outreach, Immediate Recall Study, counselling course.
+经历页条目和作品卡片打开的是同一个详情窗口。每个故事在页面底部隐藏的 `.story-src` 里写一次，带 `data-story` 的按钮或图片会打开它，网址加 `#故事id` 也能直接打开。两页共用的有：日语比赛、中科院实习、QCSSA 活动、UIBE 推广、即时回忆实验、心理咨询课程。
 
 ## 6. Other edits 其他修改
 
