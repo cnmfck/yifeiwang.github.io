@@ -1,5 +1,37 @@
 # Changelog 更新记录
 
+## v1.8 (2026-11-18)
+
+- Home cover: the bottom of the “g” in Wang and the italic overhang are no longer clipped. 首页封面：Wang 的 g 下半部和斜体右侧不再被截掉。
+- Photo stacks no longer show an “x images” label; stacks on Portfolio cards have no backdrop. 照片堆去掉“x 张图”标签，作品卡片里的照片堆去掉背景底色。
+- Portfolio order: the Japanese speech contest sits beside QCSSA events; DeADline starts the next row; the CAS card is one third wide. 作品页：日语比赛移到 QCSSA 右边，DeADline 换到下一行，中科院卡片缩成三分之一宽。
+- Timeline: Marketing Officer shows the QCSSA team photo with the banner. 经历页“市场部干事”换成 QCSSA 会旗合影。
+- Contact: removed the intro sentence under the headline. 联系页删掉标题下的介绍句。
+- Case study: removed the jump-link row and tightened the gap above the featured article; dropped the small “Case study” label. 案例页删掉跳转按钮那一行，缩短到精选推送的距离，删掉左上角“案例”小字。
+- Timeline and Portfolio filters redesigned as tabs with counts, and they stick under the header while scrolling. 经历页和作品页的筛选改成带数量的标签栏，下滑时固定在顶栏下方。
+- Timeline, Portfolio and Contact: removed the small label row and rule at the top. 经历、作品、联系三页删掉最上面的小字和横线。
+- Home selected work: no project counts; each card shows a photo stack. 首页作品精选去掉作品数量，三张卡片都改成照片堆。
+- Case banner: shorter, no “Case study” label; on Home it now sits below Skills and languages. 案例横幅变矮，去掉“案例”小字；首页的横幅移到“技能与语言”下面。
+
+## v1.7 (2026-11-18)
+
+- Timeline: every entry has a picture; entries with several images show them as a stack of prints. 经历页每一项都配图，多张图的条目显示成叠放的照片。
+- Timeline entries can open a detail window with more text and photos. The same window opens from the matching Portfolio card (speech contest, CAS internship, QCSSA events, UIBE, recall study). 经历条目可以点开详情窗口，和作品页对应卡片共用同一份内容。
+- Japanese speech contest: group photo, solo photo and certificate; date set to 28 February 2026. 日语比赛：加入合影、单人照和奖状，日期写为 2026 年 2 月 28 日。
+- CAS internship: certificate, first two paragraphs of the recommendation letter, three short quotes, and a link to the reflection article; card retitled. Contact details in the letter are not published. 中科院实习：加入实习证明、推荐信前两段、三句摘录和感言文章链接，卡片改名；推荐信里的联系方式不公开。
+- QCSSA events: Mid-Autumn cruise photo paired with its poster; the card cover is a stack of four event photos. QCSSA 活动：中秋游轮照片和海报配对；卡片封面改成四张活动照片叠放。
+- New photos for Immediate Recall Study (also the Home research card) and UPATH outreach. 回忆实验（也用于首页研究卡片）和 UPATH 宣传换上新照片。
+- Portfolio project count now updates automatically. 作品页数量自动统计。
+
+## v1.6 (2026-11-18)
+
+- Motion now runs on every device, including Windows with animation effects turned off; distances, durations and tilt angles are smaller. 动效对所有设备开启（包括关了动画效果的 Windows），幅度、时长和倾斜角度都调小。
+- Removed the cursor that followed the mouse. 删除跟随鼠标的光标。
+- Case study: Chinese title breaks after QCSSA; the Year of the Horse and White Dew posters are larger. 案例页中文标题在 QCSSA 后换行；马年和白露海报放大。
+- Correction: removed the Toronto Live show with DeADline (the band has not played in public), from Timeline and Portfolio. 勘误：删除 DeADline 的 Toronto Live 演出（乐队没有公开演出过）。
+- Portfolio: “Student campaigns for QCSSA” and “Event production and bilingual hosting” merged into “QCSSA events: from poster to room”, with five event photos and each poster shown over a photo of its event. Posters stay in the case study. 作品页：两张 QCSSA 卡片合并为“QCSSA 活动：从海报到现场”，放入 5 张活动照片，海报叠在对应活动照片上；海报本身留在案例页。
+- Home: the Media and marketing card uses the Spring Festival dinner photo; project counts update automatically. 首页“媒体与市场”换成年夜饭照片，作品数量自动统计。
+
 ## v1.5 (2026-11-18)
 
 - Case study: new Graphic posts section with 8 WeChat posters on a pinboard. 新增“图文海报”版块（8 张）。

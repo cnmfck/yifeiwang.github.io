@@ -83,19 +83,23 @@ Drop JPG files with **exactly these names** into the folders below. No code chan
 | File 文件名 | Used for 用途 | Shape 比例 |
 |---|---|---|
 | `assets/img/portrait/portrait.jpg` | Home cover and 404 editor’s note (already added) 首页封面和 404 页编者按（已放入） | any; cropped to 4:5 with the face kept near the top 任意比例，裁成 4:5 时保留脸部 |
-| `assets/img/portfolio/qcssa-01.jpg` … `qcssa-03.jpg` | QCSSA campaigns (01 is the cover) QCSSA 宣传 | 4:5 or 16:10 |
-| `assets/img/portfolio/events-01.jpg`, `events-02.jpg` | Event hosting 活动主持 | 4:3 |
-| `assets/img/portfolio/uibe-01.jpg` | UIBE outreach UIBE 推广 | 4:5 |
-| `assets/img/portfolio/cas-research.jpg` | CAS research 中科院研究 | 16:10 |
-| `assets/img/portfolio/recall-01.jpg` | Recall study chart 回忆实验图表 | 4:5 |
+| `assets/img/portfolio/event-*.jpg` (Mid-Autumn cruise, Spring Festival dinner ×2, Halloween, hanfu group, partner booth) | QCSSA events card, stacked cover, Timeline (already added) QCSSA 活动卡片、叠放封面、经历页（已放入） | 4:3 |
+| `assets/img/portfolio/speech-solo.jpg`, `speech-group.jpg`, `speech-certificate.jpg` | Japanese speech contest (already added) 日语演讲比赛（已放入） | as is 原比例 |
+| `assets/img/portfolio/cas-certificate.jpg`, `cas-letter-excerpt.jpg` | CAS internship: certificate and the first two paragraphs of the letter (already added) 中科院实习：实习证明、推荐信前两段（已放入） | as is 原比例 |
+| `assets/img/portfolio/recall-01.jpg` | Immediate Recall Study cover, Timeline, Home research card (already added; 600 px wide, a larger copy would look sharper) 回忆实验封面、经历页、首页研究卡片（已放入，宽 600 像素，有大图会更清晰） | 3:2 |
+| `assets/img/portfolio/qcssa-team-banner.jpg` | QCSSA team with the banner: Timeline (Marketing Officer) and Home media stack (already added) QCSSA 成员和会旗合影：经历页“市场部干事”、首页媒体卡片（已放入） | 3:2 |
+| `assets/img/timeline/upath-booth.jpg` | UPATH outreach booth on Timeline (already added) 经历页 UPATH 宣传摊位（已放入） | 4:3 |
+| **`assets/img/timeline/queens-psychology.jpg`** | **Still needed:** BA (Honours), Psychology on Timeline. Please use a photo of Queen’s in Kingston. **待补：**经历页“心理学荣誉学士”，请用金斯顿皇后大学的照片 | 4:3 |
+| **`assets/img/timeline/counselling-course.jpg`** | **Still needed:** Introductory Counselling Course on Timeline **待补：**经历页“心理咨询入门课程” | 4:3 |
+| **`assets/img/portfolio/uibe-01.jpg`** | **Still needed:** UIBE outreach card and Timeline **待补：**UIBE 推广卡片和经历页 | 4:5 |
+| **`assets/img/portfolio/recall-02.jpg`** | **Still needed:** chart from the recall study report (inside its dialog) **待补：**回忆实验报告里的图表（详情窗口内） | 4:3 |
 | `assets/img/portfolio/writing-01.jpg` | Film writing 电影写作 | 16:10 |
 | `assets/img/portfolio/cosplay-01.jpg` … `cosplay-06.jpg` | Cosplay (01 Kita Ikuyo, 02 Makima, 03 Power, 04 Reze, 05 Hatsune Miku, 06 Misa Amane) | 4:5 |
 | `assets/img/portfolio/makeup-01.jpg` … `makeup-03.jpg` | Makeup 化妆 | 4:3 or 4:5 |
-| `assets/img/portfolio/deadline-01.jpg`, `deadline-02.jpg` | DeADline live / rehearsal 乐队演出/排练 | 4:5 |
-| `assets/img/portfolio/speech-01.jpg` | Japanese speech contest 日语演讲 | 4:5 |
+| `assets/img/portfolio/deadline-01.jpg`, `deadline-02.jpg` | DeADline band / rehearsal 乐队/排练 | 4:5 |
 
-Tips: long side about 1600 px, under 400 KB each (compress at squoosh.app). Photos are cropped to fill their frame, so keep faces near the centre. To change a caption, edit the `<figcaption>` in `portfolio.html`.
-建议：长边约 1600 像素，每张 400 KB 以内。照片会裁切填满画框，人物尽量居中。图注在 `portfolio.html` 的 `<figcaption>` 里修改。
+Tips: long side about 1600 px, under 400 KB each (compress at squoosh.app). Photos are cropped to fill their frame, so keep faces near the centre. To change a caption, edit the `<figcaption>` in the hidden `.story-src` block at the bottom of `portfolio.html` and `timeline.html`.
+建议：长边约 1600 像素，每张 400 KB 以内。照片会裁切填满画框，人物尽量居中。图注在 `portfolio.html` 和 `timeline.html` 底部隐藏的 `.story-src` 区块里的 `<figcaption>` 修改。
 
 ### WeChat and Instagram images 公众号与 Instagram 图片 (`qcssa.html`)
 
@@ -111,6 +115,11 @@ All images live in `assets/img/qcssa/`, cropped from your screenshots (phone and
 
 The 2024 Spring Festival gala recap still has no WeChat link (its card says “No public link”). 2024 新春嘉年会回顾仍无链接。
 
+### Detail windows 详情窗口
+
+Timeline entries and Portfolio cards open the same window. Each story is written once per page in a hidden `<div class="story-src" id="src-…">`; anything with `data-story="…"` opens it, and `page.html#story-id` opens it directly. Stories shared by both pages: Japanese speech contest, CAS internship, QCSSA events, UIBE outreach, Immediate Recall Study.
+经历页条目和作品卡片打开的是同一个详情窗口。每个故事在页面底部隐藏的 `.story-src` 里写一次，带 `data-story` 的按钮或图片会打开它，网址加 `#故事id` 也能直接打开。两页共用的有：日语比赛、中科院实习、QCSSA 活动、UIBE 推广、即时回忆实验。
+
 ## 6. Other edits 其他修改
 
 - **Contact details 联系方式:** edit the `CONTACTS` rows in `contact.html` (each row is one `<li class="cline">`). To add Instagram or X, copy the LinkedIn row and change the label, link and text. 在 `contact.html` 修改联系卡片，每一行是一个 `<li class="cline">`；要加 Instagram 或 X，复制 LinkedIn 那行改文字和链接即可。
@@ -123,7 +132,7 @@ Each update gets a new number (v1.0 → v1.1 for content and small fixes, v2.0 f
 每次更新都升级版本号（内容/小修 v1.1，改版 v2.0），同时修改：
 1. `VERSION` and `CHANGELOG.md`
 2. The version comment at the top of every HTML file (generated in `<head>`) 每个页面 `<head>` 里的版本注释
-3. `?v=1.5` after `style.css` and `main.js` in all HTML files (forces browsers to load the new files) 强制浏览器加载新文件
+3. `?v=1.6` after `style.css` and `main.js` in all HTML files (forces browsers to load the new files) 强制浏览器加载新文件
 4. The version comment at the top of `css/style.css` and `js/main.js`
 5. `<lastmod>` dates in `sitemap.xml`
 
@@ -137,8 +146,8 @@ All English and Chinese copy was edited to read naturally (no stock phrases, no 
 
 ## 9. Animations 动画效果
 
-All motion lives in `js/main.js` (section 6) and the "MOTION" block at the end of `css/style.css`. Visitors whose device is set to reduce motion get the same content with no animation.
-所有动画在 `js/main.js` 第 6 部分和 `css/style.css` 末尾的 MOTION 区块。设备开启"减少动态效果"的访客会看到相同内容、没有动画。
+All motion lives in `js/main.js` (section 6) and the "MOTION" block in `css/style.css`. Since v1.6 motion runs for every visitor, including devices set to reduce motion, so distances and durations are kept small.
+所有动画在 `js/main.js` 第 6 部分和 `css/style.css` 的 MOTION 区块。从 v1.6 起所有访客都能看到动效（包括系统关了动画效果的设备），所以幅度和时长都调小了。
 
 | Effect 效果 | Where 位置 | How to use 用法 |
 |---|---|---|
@@ -151,7 +160,6 @@ All motion lives in `js/main.js` (section 6) and the "MOTION" block at the end o
 | Numbers count up 数字滚动 | Home, At a glance 首页概览 | `data-count="20"` on `.stat__num` |
 | Photo drift 照片视差 | Home 首页 | `data-parallax="0.05"` |
 | Line draws and dots light up 时间轴画线、圆点点亮 | Timeline 经历 | automatic 自动 |
-| Cursor turns into an Open/View bubble 鼠标变成"打开/查看"圆圈 | Portfolio, Home cards 作品卡片 | `data-cursor data-cursor-en="Open" data-cursor-zh="打开"` |
 | 3D tilt with a light glare 立体倾斜与反光 | Case study prints and posters 案例页海报 | add `data-tilt` |
 | Reading progress line 阅读进度条 | header 页头 | automatic 自动 |
 | Page-to-page transition 换页过渡 | all pages (Chrome, Edge, Safari 18.2+) | automatic 自动 |
@@ -161,4 +169,4 @@ All motion lives in `js/main.js` (section 6) and the "MOTION" block at the end o
 - No build step, no libraries. Works when opened from any static host. 无需构建、无第三方库。
 - Fonts are self-hosted (Bodoni Moda, Schibsted Grotesk, Mrs Saint Delafield; SIL Open Font License in `assets/fonts/`). Chinese text uses each device's system fonts, so the site loads without Google services. 字体自托管，中文用系统字体，不依赖谷歌服务。
 - SEO: canonical URLs, `hreflang` alternates (`?lang=zh`), Open Graph/Twitter cards, JSON-LD `Person` data on the home page, `sitemap.xml`, `robots.txt`.
-- Accessibility: skip link, keyboard-friendly filters and dialog, visible focus, reduced-motion support. 无障碍：跳转链接、键盘可操作、焦点可见、尊重减少动画设置。
+- Accessibility: skip link, keyboard-friendly filters and dialog, visible focus. 无障碍：跳转链接、键盘可操作、焦点可见。

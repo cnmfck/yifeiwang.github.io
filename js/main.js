@@ -1,6 +1,6 @@
 /* ==========================================================================
    Yifei Wang — personal site
-   Version: v1.5 (2026-11-18)
+   Version: v1.8 (2026-11-18)
    Plain JavaScript, no libraries. Each feature checks that its elements
    exist, so the same file works on every page.
    ========================================================================== */
@@ -166,10 +166,23 @@
       document.dispatchEvent(new CustomEvent("filterchange"));
     }
 
+    // Sticky bars: mark when stuck; after filtering, bring the top of the list back into view.
+    var sticky = bar.classList.contains("filters--sticky");
+    function stickTop() { return parseFloat(getComputedStyle(bar).top) || 0; }
+    if (sticky) {
+      var onScroll = function () { bar.classList.toggle("is-stuck", window.scrollY > 0 && bar.getBoundingClientRect().top <= stickTop() + 1); };
+      window.addEventListener("scroll", onScroll, { passive: true });
+      onScroll();
+    }
+
     chips.forEach(function (c) {
       c.addEventListener("click", function () {
         var key = c.getAttribute("data-filter");
         run(key);
+        if (sticky && bar.classList.contains("is-stuck")) {
+          var y = scope.getBoundingClientRect().top + window.scrollY - stickTop() - bar.offsetHeight - 12;
+          if (window.scrollY > y) window.scrollTo({ top: y, behavior: "smooth" });
+        }
         if (history.replaceState) {
           var url = new URL(window.location.href);
           if (key === "all") url.searchParams.delete("filter"); else url.searchParams.set("filter", key);
@@ -185,9 +198,11 @@
   });
 
   /* ------------------------------------------------------------------
-     4. Portfolio detail dialog
-     Each .work has a hidden .work__detail. "Read more" copies it into
-     the <dialog>. portfolio.html#work-id opens that piece directly.
+     4. Story dialog (Portfolio and Timeline)
+     Each story is written once, in a hidden .story-src (id "src-<id>").
+     Anything with data-story="<id>" opens it in the <dialog>, so a
+     timeline entry and its portfolio card show the same content.
+     page.html#<id> opens that story directly.
      ------------------------------------------------------------------ */
   var dialog = document.getElementById("story");
   if (dialog && typeof dialog.showModal === "function") {
@@ -195,25 +210,31 @@
     var catSlot = dialog.querySelector(".story__cat");
     var lastTrigger = null;
 
-    function openWork(work, trigger) {
-      var detail = work.querySelector(".work__detail");
-      if (!detail) return;
-      body.innerHTML = detail.innerHTML;
+    function openStory(id, trigger) {
+      var src = document.getElementById("src-" + id);
+      if (!src) return;
+      var copy = src.cloneNode(true);
+      var cat = copy.querySelector(".story-src__cat");
+      catSlot.innerHTML = cat ? cat.innerHTML : "";
+      if (cat) cat.parentNode.removeChild(cat);
+      body.innerHTML = copy.innerHTML;
       var heading = body.querySelector("h2");
       if (heading) heading.id = "story-heading";
-      var cat = work.querySelector(".work__cat");
-      catSlot.innerHTML = cat ? cat.innerHTML : "";
+      if (root.getAttribute("data-ui-lang") === "zh") {
+        body.querySelectorAll("img[data-alt-zh]").forEach(function (im) { im.alt = im.getAttribute("data-alt-zh"); });
+      }
       lastTrigger = trigger || null;
       dialog.showModal();
       dialog.scrollTop = 0;
       body.setAttribute("tabindex", "-1");
       body.focus({ preventScroll: true });
-      if (history.replaceState) history.replaceState(history.state, "", window.location.pathname + window.location.search + "#" + work.id);
+      if (history.replaceState) history.replaceState(history.state, "", window.location.pathname + window.location.search + "#" + id);
     }
 
-    document.querySelectorAll(".work").forEach(function (work) {
-      work.querySelectorAll(".work__open, .work__media").forEach(function (t) {
-        t.addEventListener("click", function () { openWork(work, work.querySelector(".work__open")); });
+    document.querySelectorAll("[data-story]").forEach(function (el) {
+      el.addEventListener("click", function () {
+        var trigger = el.matches("button, a") ? el : (el.parentNode.querySelector("button[data-story]") || null);
+        openStory(el.getAttribute("data-story"), trigger);
       });
     });
 
@@ -224,10 +245,7 @@
       if (lastTrigger) lastTrigger.focus();
     });
 
-    if (window.location.hash) {
-      var target = document.getElementById(window.location.hash.slice(1));
-      if (target && target.classList.contains("work")) openWork(target);
-    }
+    if (window.location.hash) openStory(window.location.hash.slice(1));
   }
 
   /* ------------------------------------------------------------------
@@ -287,10 +305,9 @@
 
   /* ------------------------------------------------------------------
      6. Motion
-     Skipped entirely when the visitor prefers reduced motion; all content
-     is visible without it.
+     Runs for every visitor (since v1.8), with distances kept small.
+     All content is still readable if this script fails.
      ------------------------------------------------------------------ */
-  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var CJK = /[⺀-鿿豈-﫿＀-￯　-〿]/;
 
   // Wrap words (or single CJK characters, or letters with mode "chars") in masks.
@@ -326,7 +343,7 @@
     el.classList.add("split");
   }
 
-  if (!reduce) {
+  (function () {
     root.classList.add("motion");
 
     document.querySelectorAll(".cover__line").forEach(function (line) { splitText(line, "chars"); });
@@ -395,7 +412,7 @@
         var r = el.getBoundingClientRect();
         if (r.bottom < -100 || r.top > vh + 100) return;
         var f = parseFloat(el.getAttribute("data-parallax")) || 0.1;
-        var offset = (r.top + r.height / 2 - vh / 2) * f;
+        var offset = (r.top + r.height / 2 - vh / 2) * f * 0.6;
         el.style.setProperty("--py", offset.toFixed(1) + "px");
       });
       if (rail) {
@@ -414,7 +431,7 @@
     // Badge spins slowly and speeds up with scrolling
     if (badge) {
       (function spin(now) {
-        var deg = (now - t0) * 0.012 + window.scrollY * 0.25;
+        var deg = (now - t0) * 0.01 + window.scrollY * 0.15;
         badge.style.setProperty("--rot", (deg % 360).toFixed(2) + "deg");
         requestAnimationFrame(spin);
       })(t0);
@@ -427,11 +444,11 @@
           var r = el.getBoundingClientRect();
           var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
           el.classList.add("is-tilting");
-          el.style.setProperty("--ry", ((x - 0.5) * 14).toFixed(2) + "deg");
-          el.style.setProperty("--rx", ((0.5 - y) * 12).toFixed(2) + "deg");
+          el.style.setProperty("--ry", ((x - 0.5) * 8).toFixed(2) + "deg");
+          el.style.setProperty("--rx", ((0.5 - y) * 7).toFixed(2) + "deg");
           el.style.setProperty("--gx", (x * 100).toFixed(1) + "%");
           el.style.setProperty("--gy", (y * 100).toFixed(1) + "%");
-          el.style.setProperty("--ts", "1.03");
+          el.style.setProperty("--ts", "1.02");
         });
         el.addEventListener("pointerleave", function () {
           el.classList.remove("is-tilting");
@@ -440,31 +457,7 @@
       });
     }
 
-    // Custom cursor for mouse users
-    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
-      var cursor = document.createElement("div");
-      cursor.className = "cursor"; cursor.setAttribute("aria-hidden", "true");
-      var label = document.createElement("span"); cursor.appendChild(label);
-      document.body.appendChild(cursor);
-      var cx = -100, cy = -100, tx = -100, ty = -100;
-      window.addEventListener("mousemove", function (e) { tx = e.clientX; ty = e.clientY; cursor.classList.add("is-on"); }, { passive: true });
-      document.addEventListener("mouseleave", function () { cursor.classList.remove("is-on"); });
-      (function follow() {
-        cx += (tx - cx) * 0.22; cy += (ty - cy) * 0.22;
-        cursor.style.transform = "translate3d(" + cx.toFixed(1) + "px," + cy.toFixed(1) + "px,0)";
-        requestAnimationFrame(follow);
-      })();
-      document.addEventListener("mouseover", function (e) {
-        var t = e.target.closest && e.target.closest("[data-cursor]");
-        if (t) {
-          label.textContent = t.getAttribute("data-cursor-" + currentLang()) || t.getAttribute("data-cursor-en") || "";
-          cursor.classList.add("is-big");
-        } else {
-          cursor.classList.remove("is-big");
-        }
-      });
-    }
-  }
+  })();
 
   /* ------------------------------------------------------------------
      7. Case study: jump inside the phone, and "Back" links
@@ -476,10 +469,10 @@
       var imgs = screen.querySelectorAll("img");
       var target = imgs[parseInt(btn.getAttribute("data-phone-jump"), 10)];
       if (!target) return;
-      screen.scrollTo({ top: target.offsetTop, behavior: reduce ? "auto" : "smooth" });
+      screen.scrollTo({ top: target.offsetTop, behavior: "smooth" });
       document.querySelectorAll("[data-phone-jump]").forEach(function (b) { b.classList.toggle("is-current", b === btn); });
       // on narrow screens the phone sits above the list; bring it into view
-      if (window.innerWidth < 960) screen.closest(".phone").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+      if (window.innerWidth < 960) screen.closest(".phone").scrollIntoView({ behavior: "smooth", block: "center" });
     });
   });
   if (screen && "IntersectionObserver" in window) {
