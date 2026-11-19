@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 400" preserveAspectRatio="xMidYMid slice" role="img" aria-label="三城">
+<defs><pattern id="d" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="8" cy="8" r="2.4" fill="#e8457c"/></pattern></defs>
+<rect width="940" height="400" fill="#e8ebf5"/>
+<rect x="560" y="0" width="380" height="400" fill="url(#d)" opacity=".55"/>
+<rect x="40" y="40" width="860" height="320" fill="none" stroke="#1d2140" stroke-width="3"/>
+<text x="90" y="272" font-family="'Songti SC','STSong','Noto Serif CJK SC','Source Han Serif SC','SimSun',serif" font-weight="900" font-size="200" fill="#e8457c" transform="translate(7 6)">三城</text>
+<text x="90" y="272" font-family="'Songti SC','STSong','Noto Serif CJK SC','Source Han Serif SC','SimSun',serif" font-weight="900" font-size="200" fill="#1d2140" style="mix-blend-mode:multiply">三城</text>
+<text x="880" y="92" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-weight="700" font-size="26" fill="#1d2140">QCSSA</text>
+<text x="880" y="336" text-anchor="end" font-family="Helvetica,Arial,sans-serif" font-weight="600" font-size="22" fill="#1d2140">New students</text>
+</svg>

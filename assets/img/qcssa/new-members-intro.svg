@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 800" preserveAspectRatio="xMidYMid slice" role="img" aria-label="新成员">
+<defs><pattern id="d" width="16" height="16" patternUnits="userSpaceOnUse"><circle cx="8" cy="8" r="2.4" fill="#e8457c"/></pattern></defs>
+<rect width="600" height="800" fill="#f6f5f1"/><rect x="0" y="520" width="600" height="280" fill="url(#d)" opacity=".55"/>
+<rect x="40" y="40" width="520" height="720" fill="none" stroke="#1d2140" stroke-width="3"/>
+<text x="300" y="120" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-weight="700" font-size="28" fill="#1d2140">QCSSA</text>
+<g font-family="'Songti SC','STSong','Noto Serif CJK SC','Source Han Serif SC','SimSun',serif" font-weight="900" font-size="150" text-anchor="middle">
+<text x="300" y="300" fill="#e8457c" transform="translate(7 6)">新成</text><text x="300" y="300" fill="#1d2140" style="mix-blend-mode:multiply">新成</text>
+<text x="300" y="460" fill="#e8457c" transform="translate(7 6)">员</text><text x="300" y="460" fill="#1d2140" style="mix-blend-mode:multiply">员</text></g>
+<text x="300" y="720" text-anchor="middle" font-family="Helvetica,Arial,sans-serif" font-weight="600" font-size="22" fill="#1d2140">Recruitment</text>
+</svg>
