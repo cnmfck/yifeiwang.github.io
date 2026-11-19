@@ -1,6 +1,6 @@
-# Yifei Wang — Personal Website / 个人网站
+# Yifei Wang (王奕霏) — Personal Website / 个人网站
 
-**Version 版本: v1.2 (2026-11-18)**
+**Version 版本: v1.5 (2026-11-18)**
 
 A bilingual (English / 中文) portfolio site for graduate applications, built with plain HTML, CSS and JavaScript and hosted on GitHub Pages with a custom domain.
 中英双语个人作品集网站，用于研究生申请。纯 HTML、CSS、JavaScript 编写，部署在 GitHub Pages 并绑定自有域名。
@@ -14,7 +14,8 @@ A bilingual (English / 中文) portfolio site for graduate applications, built w
 | `index.html` | Home 首页 | Cover with a four-line Highlights list, keyword ticker, At a glance (short intro, numbers, education, coursework, interests, languages), Selected work, Skills and languages 封面（含四条代表经历）、关键词滚动条、概览（简介、数字、学业、课程、兴趣、语言）、作品精选、技能与语言 |
 | `timeline.html` | Timeline 经历 | Every résumé entry since 2022 with filters and a scroll-drawn line, then skills and languages 简历上的全部经历，可筛选，时间轴随滚动画线，末尾附技能与语言 |
 | `portfolio.html` | Portfolio 作品 | 10 projects with filters; each opens a detail window with facts and photos 10 个作品，可筛选，点开有详情和图集 |
-| `contact.html` | Contact 联系 | Statement on the left; contact card on the right with preferred email, Queen’s email, phone, LinkedIn and location, each with a copy button 左侧标题，右侧联系卡片：常用邮箱、学校邮箱、电话、LinkedIn、所在地，可一键复制 |
+| `contact.html` | Contact 联系 | Statement on the left; contact card on the right: Queen’s email (preferred), personal email, phone, LinkedIn, location, with copy buttons 左侧标题，右侧联系卡片：皇后大学邮箱（首选）、个人邮箱、电话、LinkedIn、所在地，可一键复制 |
+| `qcssa.html` | QCSSA case study 宣传案例 | Mid-Autumn article in full inside a phone on a navy “moon” stage; Year of the Horse and White Dew side by side on themed stages; all 21 WeChat articles (covers pop out on hover); 8 graphic posts on a pinboard; 3 more Instagram posts; QCSSA’s official accounts. 中秋完整推送、马年与白露并排、21 篇推送、8 张图文海报、3 条 Instagram、官方账号 |
 | `404.html` | Not found 404 页 | Magazine "errata" page: a dashed cut-out with the 404, a link list of all pages, and an editor’s note with your photo and email. Works at any missing address and when opened locally. 杂志"勘误"风格：虚线剪切框里的 404、全站页面目录、带照片和邮箱的编者按；任何不存在的地址都能正常显示，本地打开也正常 |
 
 ## 2. Folder structure 目录结构
@@ -28,6 +29,7 @@ yifei-wang-site/
 │   ├── fonts/               self-hosted fonts: Bodoni Moda, Schibsted Grotesk, Mrs Saint Delafield (SIL OFL) 自托管字体
 │   ├── img/
 │   │   ├── portrait/        portrait.jpg, your photo (cover and 404 page) 个人照片（首页封面和 404 页使用）
+│   │   ├── qcssa/           WeChat article covers and the long screenshot; .svg files are the typographic stand-ins 公众号头图与长图；.svg 是排版占位图
 │   │   ├── portfolio/       project photos go here 作品照片放这里
 │   │   ├── placeholders/    art shown until a photo exists 没有照片时显示的占位图
 │   │   ├── favicon.svg, favicon-32.png, apple-touch-icon.png, icon-192/512.png
@@ -95,6 +97,20 @@ Drop JPG files with **exactly these names** into the folders below. No code chan
 Tips: long side about 1600 px, under 400 KB each (compress at squoosh.app). Photos are cropped to fill their frame, so keep faces near the centre. To change a caption, edit the `<figcaption>` in `portfolio.html`.
 建议：长边约 1600 像素，每张 400 KB 以内。照片会裁切填满画框，人物尽量居中。图注在 `portfolio.html` 的 `<figcaption>` 里修改。
 
+### WeChat and Instagram images 公众号与 Instagram 图片 (`qcssa.html`)
+
+All images live in `assets/img/qcssa/`, cropped from your screenshots (phone and app bars removed), converted to JPG and resized.
+图片都在 `assets/img/qcssa/`，已从截图裁掉手机和应用界面，转成 JPG 并缩小。
+
+| Files 文件 | Used for 用途 |
+|---|---|
+| `midautumn-01.jpg` … `midautumn-06.jpg` | Mid-Autumn cruise, full article in the phone 中秋完整推送 |
+| `<slug>.jpg` (21 files, e.g. `cny-fair-horse.jpg`, `canteen.jpg`, `new-members-intro.jpg`) | WeChat article covers 公众号推送缩略图 |
+| `post-midautumn-fair.jpg`, `post-sidewalk-a.jpg`, `post-cny-taste.jpg`, `post-labour-day.jpg`, `post-mothers-day.jpg`, `post-xiaoman.jpg`, `post-sidewalk-b.jpg`, `post-uibe-info.jpg` | Graphic posts 图文海报 |
+| `ig-bailu.jpg` (DOT1vRnEa3G), `ig-DVxPd-Yli9H.jpg`, `ig-DWDEQ7AFsIG.jpg`, `ig-CyzDngbLRcS.jpg` | Instagram posts, named by link code Instagram 帖子，按链接代码命名 |
+
+The 2024 Spring Festival gala recap still has no WeChat link (its card says “No public link”). 2024 新春嘉年会回顾仍无链接。
+
 ## 6. Other edits 其他修改
 
 - **Contact details 联系方式:** edit the `CONTACTS` rows in `contact.html` (each row is one `<li class="cline">`). To add Instagram or X, copy the LinkedIn row and change the label, link and text. 在 `contact.html` 修改联系卡片，每一行是一个 `<li class="cline">`；要加 Instagram 或 X，复制 LinkedIn 那行改文字和链接即可。
@@ -107,12 +123,19 @@ Each update gets a new number (v1.0 → v1.1 for content and small fixes, v2.0 f
 每次更新都升级版本号（内容/小修 v1.1，改版 v2.0），同时修改：
 1. `VERSION` and `CHANGELOG.md`
 2. The version comment at the top of every HTML file (generated in `<head>`) 每个页面 `<head>` 里的版本注释
-3. `?v=1.2` after `style.css` and `main.js` in all HTML files (forces browsers to load the new files) 强制浏览器加载新文件
+3. `?v=1.5` after `style.css` and `main.js` in all HTML files (forces browsers to load the new files) 强制浏览器加载新文件
 4. The version comment at the top of `css/style.css` and `js/main.js`
 5. `<lastmod>` dates in `sitemap.xml`
 
+## 8. Draft copy to review 需要本人确认的文字
 
-## 8. Animations 动画效果
+All English and Chinese copy was edited to read naturally (no stock phrases, no translated-sounding Chinese). A few first-person lines are still drafts written for you; change them to your own words if they don't sound like you:
+中英文文案都已改写得更自然。下面几句第一人称文字是替你写的草稿，不像你的口吻就改掉：
+- Home: the cover paragraph and the two At a glance paragraphs 首页封面简介和"概览"两段
+- Portfolio: cosplay opening sentence and character list; makeup first sentence; film writing first sentence 作品页 cosplay 开头和角色列表、化妆第一句、电影写作第一句
+- UIBE start date: the CV says Sep 2024. Confirm it before publishing. UIBE 起始时间请核对。
+
+## 9. Animations 动画效果
 
 All motion lives in `js/main.js` (section 6) and the "MOTION" block at the end of `css/style.css`. Visitors whose device is set to reduce motion get the same content with no animation.
 所有动画在 `js/main.js` 第 6 部分和 `css/style.css` 末尾的 MOTION 区块。设备开启"减少动态效果"的访客会看到相同内容、没有动画。
@@ -129,10 +152,11 @@ All motion lives in `js/main.js` (section 6) and the "MOTION" block at the end o
 | Photo drift 照片视差 | Home 首页 | `data-parallax="0.05"` |
 | Line draws and dots light up 时间轴画线、圆点点亮 | Timeline 经历 | automatic 自动 |
 | Cursor turns into an Open/View bubble 鼠标变成"打开/查看"圆圈 | Portfolio, Home cards 作品卡片 | `data-cursor data-cursor-en="Open" data-cursor-zh="打开"` |
+| 3D tilt with a light glare 立体倾斜与反光 | Case study prints and posters 案例页海报 | add `data-tilt` |
 | Reading progress line 阅读进度条 | header 页头 | automatic 自动 |
 | Page-to-page transition 换页过渡 | all pages (Chrome, Edge, Safari 18.2+) | automatic 自动 |
 
-## 9. Tech notes 技术说明
+## 10. Tech notes 技术说明
 
 - No build step, no libraries. Works when opened from any static host. 无需构建、无第三方库。
 - Fonts are self-hosted (Bodoni Moda, Schibsted Grotesk, Mrs Saint Delafield; SIL Open Font License in `assets/fonts/`). Chinese text uses each device's system fonts, so the site loads without Google services. 字体自托管，中文用系统字体，不依赖谷歌服务。

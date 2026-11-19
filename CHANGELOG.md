@@ -1,5 +1,32 @@
 # Changelog 更新记录
 
+## v1.5 (2026-11-18)
+
+- Case study: new Graphic posts section with 8 WeChat posters on a pinboard. 新增“图文海报”版块（8 张）。
+- White Dew moved up next to Year of the Horse; both shown on themed stages with 3D tilt. 白露与马年并排展示，主题背景加立体倾斜。
+- Instagram: real images for all 4 posts; DV6h-D8FiTe removed. Instagram 4 条都换上真图，删除一条。
+- “Meet QCSSA’s new members” now uses its real image. 新成员介绍换上真图。
+- Removed the Top pick / Second pick labels. 删除 Top pick / Second pick 标签。
+- New hover on article cards: the cover grows past its frame. 推送卡片 hover 改为放大并超出框框。
+- Small line icons, PowerPoint added to tools, and QCSSA’s official accounts (WeChat, Instagram, RedNote). 加入小图标、工具补上 PowerPoint、附 QCSSA 官方账号。
+
+## v1.4 (2026-11-18)
+
+- Case study rebuilt as “QCSSA campaigns” (WeChat and Instagram): Mid-Autumn cruise shown in full in a phone frame with a clickable outline of its six parts; Year of the Horse as second pick; real thumbnails for 20 of 21 articles; Instagram section with White Dew featured. 案例页改版：中秋完整推送、马年第二、20 张真实缩略图、Instagram 区。
+- Removed the Halloween pumpkin-vote article (not Yifei’s). Added the 2024 Spring Festival gala recap. Removed the headline-patterns section. 删除万圣节南瓜灯选美推送（非本人作品），加入 2024 新春嘉年会回顾，删除“标题怎么写”。
+- Article titles now switch fully between English and Chinese. 推送标题随中英切换。
+- Back links at the top and bottom of the case study. 案例页顶部和底部加返回链接。
+- Large case-study banners on Home and Portfolio. 首页和作品页加入大号案例入口。
+- Badge text stays English in both languages; its click area is now exactly the circle (the big name no longer blocks it), and it scrolls smoothly. 旋转徽章固定英文，点击范围修正为整个圆形，平滑滚动。
+
+## v1.3 (2026-11-18)
+
+- New page `qcssa.html`: WeChat case study with the dining hall article in a scrollable phone frame, four headline patterns from the 21 titles, and the full article archive by category, linking to each WeChat post. Desktop grid, swipe rows on phones. 新增公众号案例页。
+- Typographic stand-in covers for every article until the real covers are added. 每篇推送先用排版占位头图。
+- Contact: Queen’s email is now the preferred address; small labels removed from the contact rows (still read out by screen readers). 联系页：皇后大学邮箱设为首选，去掉联系卡片里的小字标签。
+- Footer: email removed, © moved to the left. 页脚去掉邮箱，© 移到左侧。
+- Links to the case study from the home page highlights, the Media and marketing card, and the QCSSA portfolio entry. 首页代表经历、媒体与市场卡片、作品页 QCSSA 详情都加了案例页入口。
+
 ## v1.2 (2026-11-18)
 
 - Added the portrait in a new folder, `assets/img/portrait/portrait.jpg` (replaces the old `profile/` placeholder slot). 新建 `assets/img/portrait/` 存放个人照片。

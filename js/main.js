@@ -1,6 +1,6 @@
 /* ==========================================================================
    Yifei Wang — personal site
-   Version: v1.2 (2026-11-18)
+   Version: v1.5 (2026-11-18)
    Plain JavaScript, no libraries. Each feature checks that its elements
    exist, so the same file works on every page.
    ========================================================================== */
@@ -100,7 +100,7 @@
       showing: function (n, total) { return "Showing " + n + " of " + total + "."; },
       required: "Fill in this field.",
       emailInvalid: "Enter an email address like name@example.com.",
-      opening: "Your email app should open with the message filled in. If nothing happens, write to yifei9430@gmail.com.",
+      opening: "Your email app should open with the message filled in. If nothing happens, write to 23sc16@queensu.ca.",
       subjectPrefix: "Website enquiry"
     },
     zh: {
@@ -109,7 +109,7 @@
       showing: function (n, total) { return "共 " + total + " 项，当前显示 " + n + " 项。"; },
       required: "请填写这一项。",
       emailInvalid: "请输入有效的邮箱地址，例如 name@example.com。",
-      opening: "邮件应用会打开并自动填好内容。如果没有反应，请直接发邮件到 yifei9430@gmail.com。",
+      opening: "邮件应用会打开并自动填好内容。如果没有反应，请直接发邮件到 23sc16@queensu.ca。",
       subjectPrefix: "网站来信"
     }
   };
@@ -306,7 +306,7 @@
           tokens.forEach(function (tok) {
             if (/^\s+$/.test(tok)) { frag.appendChild(document.createTextNode(tok)); return; }
             // Keep CJK closing punctuation on the same line as the character before it.
-            if (/^[，。、；：？！）」』》…]$/.test(tok) && frag.lastChild && frag.lastChild.className === "w") {
+            if (/^[，。、；：？！）」』》…]+$/.test(tok) && frag.lastChild && frag.lastChild.className === "w") {
               frag.lastChild.firstChild.textContent += tok; return;
             }
             if (mode === "chars") {
@@ -420,6 +420,26 @@
       })(t0);
     }
 
+    // 3D tilt with a light glare on large images (mouse only)
+    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+      document.querySelectorAll("[data-tilt]").forEach(function (el) {
+        el.addEventListener("pointermove", function (e) {
+          var r = el.getBoundingClientRect();
+          var x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+          el.classList.add("is-tilting");
+          el.style.setProperty("--ry", ((x - 0.5) * 14).toFixed(2) + "deg");
+          el.style.setProperty("--rx", ((0.5 - y) * 12).toFixed(2) + "deg");
+          el.style.setProperty("--gx", (x * 100).toFixed(1) + "%");
+          el.style.setProperty("--gy", (y * 100).toFixed(1) + "%");
+          el.style.setProperty("--ts", "1.03");
+        });
+        el.addEventListener("pointerleave", function () {
+          el.classList.remove("is-tilting");
+          ["--rx", "--ry", "--ts"].forEach(function (k) { el.style.removeProperty(k); });
+        });
+      });
+    }
+
     // Custom cursor for mouse users
     if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
       var cursor = document.createElement("div");
@@ -447,7 +467,43 @@
   }
 
   /* ------------------------------------------------------------------
-     7. Footer year
+     7. Case study: jump inside the phone, and "Back" links
+     ------------------------------------------------------------------ */
+  var screen = document.querySelector(".phone__screen");
+  document.querySelectorAll("[data-phone-jump]").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      if (!screen) return;
+      var imgs = screen.querySelectorAll("img");
+      var target = imgs[parseInt(btn.getAttribute("data-phone-jump"), 10)];
+      if (!target) return;
+      screen.scrollTo({ top: target.offsetTop, behavior: reduce ? "auto" : "smooth" });
+      document.querySelectorAll("[data-phone-jump]").forEach(function (b) { b.classList.toggle("is-current", b === btn); });
+      // on narrow screens the phone sits above the list; bring it into view
+      if (window.innerWidth < 960) screen.closest(".phone").scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "center" });
+    });
+  });
+  if (screen && "IntersectionObserver" in window) {
+    var partBtns = document.querySelectorAll("[data-phone-jump]");
+    var pio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        var idx = Array.prototype.indexOf.call(screen.querySelectorAll("img"), en.target);
+        partBtns.forEach(function (b, i) { b.classList.toggle("is-current", i === idx); });
+      });
+    }, { root: screen, threshold: 0.35 });
+    screen.querySelectorAll("img").forEach(function (im) { pio.observe(im); });
+  }
+  // "Back" returns to the previous page on this site; otherwise it follows its link
+  document.querySelectorAll("[data-back]").forEach(function (a) {
+    a.addEventListener("click", function (e) {
+      var fromHere = false;
+      try { fromHere = document.referrer && new URL(document.referrer).host === location.host; } catch (err) {}
+      if (fromHere && history.length > 1) { e.preventDefault(); history.back(); }
+    });
+  });
+
+  /* ------------------------------------------------------------------
+     8. Footer year
      ------------------------------------------------------------------ */
   document.querySelectorAll("[data-year-now]").forEach(function (el) { el.textContent = String(new Date().getFullYear()); });
 })();
