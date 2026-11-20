@@ -1,5 +1,36 @@
 # Changelog 更新记录
 
+## v2.3 (2026-11-20)
+
+- Fixed the Back links: the large page titles overhung them and caught the click. Back links now sit above the titles on the cosplay, QCSSA and writing pages, and both cosplay Back links (top and bottom) are restored. 修复返回按钮：页面大标题盖住了按钮，点击被标题挡住。现在 cosplay、QCSSA、写作页的返回按钮都在标题上层，cosplay 页顶部和底部的返回按钮都已恢复。
+- Back now leaves the page even after in-page jumps: links to a spot on the same page (the three cosplay panels, Back to top, year links) scroll without adding history entries. If the visitor arrived from outside the site, Back goes to its link. 页内跳转（cosplay 三块竖幅、回到顶部、年份链接）不再增加浏览记录，所以返回一定会离开当前页；从站外进来时返回会直接去对应页面。
+- Cosplay: removed the rolling band of character names; added 18 photos of other cosplays under Mizuki (Power with Denji first, then Reze and others), with no names shown and no captions in the viewer. Phones use a masonry layout. Cosplay：删掉角色名滚动条；水月下面加入 18 张其他 cosplay 照片（帕瓦与电次排最前，然后是蕾塞等），页面和看大图时都不显示角色名；手机上改为瀑布流排列。
+
+## v2.2 (2026-11-20)
+
+- New project: two correlational studies from PSYC 203, analyzed in R (neuroticism and stress, N = 187; media multitasking, mindfulness and flanker distraction, N = 86), with a chart of the four correlations and their 95% CIs. Added third in Portfolio, at the top of 2026 on Timeline, to the Home research stack, and R/RStudio/tidyverse to the skills. 新增项目：PSYC 203 的两项相关研究，用 R 分析（神经质与压力，N = 187；媒体多任务、正念与 flanker 干扰，N = 86），附四个相关系数及 95% 置信区间图。放在作品页第三位、经历页 2026 年第一条、首页研究照片堆，技能里加入 R、RStudio、tidyverse。
+- Portfolio order: film writing moves up to where makeup was; counselling and the recall study swap; the makeup card is hidden for now. 作品页顺序：电影写作移到原化妆的位置，心理咨询与回忆实验互换，化妆卡片暂时隐藏。
+- Portfolio: QCSSA events card narrower (7 of 12 columns, speech contest 5); dates shown as italic serif figures after a pink rule instead of pills; “Contact Yifei” is now “Contact me”. 作品页：QCSSA 卡片变窄（12 栏占 7，日语比赛占 5）；时间改成粉色短线加斜体衬线数字；“Contact Yifei”改为“Contact me”。
+- Script lettering beside the Portfolio, Timeline, Cosplay and Writing titles now follows the last letter and no longer overlaps; the prints beside the Portfolio title are photos only. 作品、经历、Cosplay、写作页标题旁的花体字紧跟最后一个字母，不再重叠；作品页标题旁的照片只放照片类。
+- Writing page: FILM 215 is Science Fiction Cinema. 写作页：FILM 215 改为 Science Fiction Cinema。
+- Cosplay: script reads “lookbook”; the Back links are removed; a section for other characters (Power first) under Mizuki fills in as soon as photos are added. Cosplay：花体字改为 lookbook，删掉返回链接；水月下面预留了其他角色的照片区（帕瓦排第一），放入照片即显示。
+- 404 page: shows the address that was asked for, suggests the closest page, and lists all seven pages. 404 页面显示访客输入的地址，推荐最接近的页面，并列出全部七个页面。
+
+## v2.1 (2026-11-19)
+
+- New page: writing.html summarizes eight essays from FILM 215, 260, 303 and 335, with “Culture jamming has a shelf life” as the featured essay and a section on the psychology concepts the essays use. The film writing card, its window and the Home research card link to it. 新增 writing.html：整理 FILM 215、260、303、335 的八篇文章，以《文化干扰有保质期》为精选，并单列文章里用到的心理学概念；作品卡片、详情窗口和首页研究卡片都链接过去。
+- Immediate Recall Study: rewritten and expanded with the procedure as a five-step diagram, what each task measures, the link to the Rey Auditory Verbal Learning Test, and a fuller list of my part. The covered word-list sheet is removed. 即时回忆实验：重写扩充，加入五步流程图、两个任务各测什么、和 RAVLT 的对应关系，以及更完整的个人分工；删掉被遮挡答案的词表图。
+- DeADline: band logo on the card, in its window and in the Home stack. DeADline：乐队 logo 用在卡片、详情窗口和首页照片堆。
+- Cosplay: all character names now roll together in one band under the three panels, with no “Other characters” heading. Cosplay：所有角色名放进三块竖幅下方的滚动条，不再单列“其他角色”。
+- Makeup bookings are no longer mentioned on the makeup card, the cosplay page or the contact page description. 化妆卡片、cosplay 页和联系页描述里不再提约妆。
+
+## v2.0 (2026-11-19)
+
+- New page: cosplay.html, a lookbook for Kita Ikuyo, Misa Amane and Mizuki. Opens on three tall panels that widen on hover; each look then gets its own colours and layout, and every photo opens in a full-screen viewer (arrows, keyboard, swipe). 新增 cosplay.html 作品集：喜多郁代、弥海砂、水月。开头是三块竖幅，鼠标移上去会展开；每套造型有自己的配色和版式，所有照片都能全屏看大图（箭头、键盘、滑动切换）。
+- Portfolio: the cosplay card shows the three looks and links to the lookbook. Home: the cosplay stack uses the new photos and links to the lookbook. 作品页 cosplay 卡片改成三套造型并链接到作品集；首页 cosplay 照片堆换成新照片。
+- Immediate Recall Study: the story and word-list response sheets, with a short note on how the task worked; also added to the card and Timeline stacks. 即时回忆实验：加入故事和词表记录表，并说明实验流程；卡片和经历页照片堆也加上。
+- UIBE outreach: two photos from the info session (snack table, gifts and prizes) in the card, its window and Timeline. UIBE 推广：卡片、详情窗口和经历页加入宣讲会的两张照片（零食桌、礼品）。
+
 ## v1.9 (2026-11-19)
 
 - Home: Skills and languages moves above Selected work and becomes a dark band: skills in large type grouped by Research, Tools, Communication and Creative, and three languages with level bars. 首页“技能与语言”移到“作品精选”上面，改成深色整栏：技能按研究、工具、传播与组织、创作分组大字排列，三门语言带水平条。

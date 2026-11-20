@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Yifei Wang site v1.9. Replace yifeiwang.cc with the real domain. -->
+<!-- Yifei Wang site v2.3. Replace yifeiwang.cc with the real domain. -->
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://yifeiwang.cc/</loc>
@@ -42,6 +42,24 @@
     <xhtml:link rel="alternate" hreflang="en" href="https://yifeiwang.cc/qcssa.html"/>
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://yifeiwang.cc/qcssa.html?lang=zh"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://yifeiwang.cc/qcssa.html"/>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yifeiwang.cc/cosplay.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yifeiwang.cc/cosplay.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://yifeiwang.cc/cosplay.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yifeiwang.cc/cosplay.html"/>
+    <lastmod>2026-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://yifeiwang.cc/writing.html</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://yifeiwang.cc/writing.html"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://yifeiwang.cc/writing.html?lang=zh"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://yifeiwang.cc/writing.html"/>
     <lastmod>2026-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

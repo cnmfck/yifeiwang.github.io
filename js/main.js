@@ -1,6 +1,6 @@
 /* ==========================================================================
    Yifei Wang — personal site
-   Version: v1.9 (2026-11-18)
+   Version: v2.3 (2026-11-18)
    Plain JavaScript, no libraries. Each feature checks that its elements
    exist, so the same file works on every page.
    ========================================================================== */
@@ -305,7 +305,7 @@
 
   /* ------------------------------------------------------------------
      6. Motion
-     Runs for every visitor (since v1.9), with distances kept small.
+     Runs for every visitor (since v2.3), with distances kept small.
      All content is still readable if this script fails.
      ------------------------------------------------------------------ */
   var CJK = /[⺀-鿿豈-﫿＀-￯　-〿]/;
@@ -486,12 +486,37 @@
     }, { root: screen, threshold: 0.35 });
     screen.querySelectorAll("img").forEach(function (im) { pio.observe(im); });
   }
-  // "Back" returns to the previous page on this site; otherwise it follows its link
+  // Links to a spot on the same page scroll there without adding a history entry,
+  // so the browser's Back button and the "Back" links below leave the page instead of
+  // stepping through #anchors.
+  document.addEventListener("click", function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="#"]');
+    if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var id = a.getAttribute("href").slice(1);
+    var target = id ? document.getElementById(id) : null;
+    if (!target) return;
+    e.preventDefault();
+    target.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (!target.hasAttribute("tabindex") && !/^(A|BUTTON|INPUT|SELECT|TEXTAREA)$/.test(target.tagName)) target.setAttribute("tabindex", "-1");
+    target.focus({ preventScroll: true });
+    if (history.replaceState) history.replaceState(history.state, "", location.pathname + location.search + "#" + id);
+  });
+
+  // "Back" returns to the previous page on this site. If the visitor came from another
+  // site, typed the address, or going back would not leave this page, it follows its link.
+  var leaving = false;
+  window.addEventListener("pagehide", function () { leaving = true; });
   document.querySelectorAll("[data-back]").forEach(function (a) {
     a.addEventListener("click", function (e) {
-      var fromHere = false;
-      try { fromHere = document.referrer && new URL(document.referrer).host === location.host; } catch (err) {}
-      if (fromHere && history.length > 1) { e.preventDefault(); history.back(); }
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      var ref = null;
+      try { ref = document.referrer ? new URL(document.referrer) : null; } catch (err) {}
+      var fromSite = ref && ref.host === location.host && ref.pathname !== location.pathname;
+      if (!fromSite || history.length < 2) return;
+      e.preventDefault();
+      var fallback = a.href;
+      history.back();
+      setTimeout(function () { if (!leaving) location.href = fallback; }, 600);
     });
   });
 
@@ -499,4 +524,117 @@
      8. Footer year
      ------------------------------------------------------------------ */
   document.querySelectorAll("[data-year-now]").forEach(function (el) { el.textContent = String(new Date().getFullYear()); });
+
+  /* ------------------------------------------------------------------
+     9. Photo viewer (cosplay lookbook)
+     Links with data-lightbox="<group>" open the large photo in a
+     full-screen <dialog>; arrows, arrow keys and swipes move through
+     the group. Captions come from data-alt-en / data-alt-zh.
+     ------------------------------------------------------------------ */
+  var lb = document.getElementById("lightbox");
+  if (lb && typeof lb.showModal === "function") {
+    var lbImg = lb.querySelector("img");
+    var lbCap = lb.querySelector(".lightbox__caption");
+    var lbCount = lb.querySelector(".lightbox__count");
+    var lbGroup = [], lbAt = 0, lbTrigger = null;
+
+    function lbShow(i) {
+      lbAt = (i + lbGroup.length) % lbGroup.length;
+      var a = lbGroup[lbAt];
+      var alt = a.hasAttribute("data-nocap") ? "" : (a.getAttribute(root.getAttribute("data-ui-lang") === "zh" ? "data-alt-zh" : "data-alt-en") || "");
+      var im0 = a.querySelector("img");
+      lb.classList.add("is-loading");
+      var pre = new Image();
+      pre.onload = pre.onerror = function () {
+        if (lbGroup[lbAt] !== a) return;
+        lbImg.src = a.getAttribute("href");
+        lb.classList.remove("is-loading");
+      };
+      pre.src = a.getAttribute("href");
+      lbImg.alt = alt || (im0 ? im0.alt : "");
+      lbCap.textContent = alt;
+      lbCount.textContent = (lbAt + 1) + " / " + lbGroup.length;
+    }
+
+    document.querySelectorAll("a[data-lightbox]").forEach(function (a) {
+      a.addEventListener("click", function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        lbGroup = Array.prototype.slice.call(document.querySelectorAll('a[data-lightbox="' + a.getAttribute("data-lightbox") + '"]'));
+        lbTrigger = a;
+        lbImg.removeAttribute("src");
+        lb.showModal();
+        lbShow(lbGroup.indexOf(a));
+      });
+    });
+    lb.querySelector(".lightbox__nav--prev").addEventListener("click", function () { lbShow(lbAt - 1); });
+    lb.querySelector(".lightbox__nav--next").addEventListener("click", function () { lbShow(lbAt + 1); });
+    lb.querySelector(".lightbox__close").addEventListener("click", function () { lb.close(); });
+    lb.addEventListener("keydown", function (e) {
+      if (e.key === "ArrowLeft") { e.preventDefault(); lbShow(lbAt - 1); }
+      if (e.key === "ArrowRight") { e.preventDefault(); lbShow(lbAt + 1); }
+    });
+    lb.addEventListener("click", function (e) {
+      if (e.target === lb || e.target.classList.contains("lightbox__figure")) lb.close();
+    });
+    var lbX = null;
+    lb.addEventListener("touchstart", function (e) { lbX = e.touches[0].clientX; }, { passive: true });
+    lb.addEventListener("touchend", function (e) {
+      if (lbX === null) return;
+      var dx = e.changedTouches[0].clientX - lbX;
+      if (Math.abs(dx) > 40) lbShow(lbAt + (dx < 0 ? 1 : -1));
+      lbX = null;
+    }, { passive: true });
+    lb.addEventListener("close", function () { if (lbTrigger) lbTrigger.focus(); });
+  }
+
+
+  /* ------------------------------------------------------------------
+     10. 404 page: show the address that was asked for and suggest the
+     closest real page. GitHub Pages serves 404.html for any missing
+     address on the domain, so this runs for every broken link.
+     ------------------------------------------------------------------ */
+  var askedEl = document.querySelector("[data-missing-path]");
+  if (askedEl && location.protocol !== "file:") {
+    var path = decodeURIComponent(location.pathname);
+    if (path && path !== "/" && !/\/404(\.html)?$/.test(path)) {
+      askedEl.querySelector("code").textContent = path;
+      askedEl.hidden = false;
+      var pages = [
+        { href: "timeline.html", en: "Timeline", zh: "经历", keys: ["timeline", "resume", "cv", "experience", "about", "education"] },
+        { href: "portfolio.html", en: "Portfolio", zh: "作品", keys: ["portfolio", "work", "works", "projects", "project", "research"] },
+        { href: "contact.html", en: "Contact", zh: "联系", keys: ["contact", "email", "mail", "linkedin", "phone"] },
+        { href: "qcssa.html", en: "QCSSA campaigns", zh: "QCSSA 宣传作品", keys: ["qcssa", "wechat", "instagram", "campaign", "campaigns", "marketing", "posters"] },
+        { href: "cosplay.html", en: "Cosplay lookbook", zh: "Cosplay 作品集", keys: ["cosplay", "cos", "lookbook", "kita", "misa", "mizuki", "makeup", "photos"] },
+        { href: "writing.html", en: "Writing on film", zh: "电影与媒体写作", keys: ["writing", "film", "essays", "essay", "media", "papers"] },
+        { href: "index.html", en: "Home", zh: "首页", keys: ["home", "index", "main"] }
+      ];
+      var words = path.toLowerCase().replace(/\.html?$/, "").split(/[^a-z0-9]+/).filter(Boolean);
+      function dist(a, b) {
+        var m = [], i, j;
+        for (i = 0; i <= a.length; i++) { m[i] = [i]; }
+        for (j = 0; j <= b.length; j++) { m[0][j] = j; }
+        for (i = 1; i <= a.length; i++) for (j = 1; j <= b.length; j++)
+          m[i][j] = Math.min(m[i - 1][j] + 1, m[i][j - 1] + 1, m[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+        return m[a.length][b.length];
+      }
+      var best = null, bestScore = Infinity;
+      pages.forEach(function (pg) {
+        words.forEach(function (w) {
+          pg.keys.forEach(function (k) {
+            var d = dist(w, k), limit = k.length <= 4 ? 1 : 2;
+            if (d <= limit && d < bestScore) { bestScore = d; best = pg; }
+          });
+        });
+      });
+      if (best) {
+        var guess = document.querySelector("[data-missing-guess]"), a = guess.querySelector("a");
+        var zh = root.getAttribute("data-ui-lang") === "zh";
+        a.href = best.href + (zh ? "?lang=zh" : "");
+        a.textContent = zh ? best.zh : best.en;
+        guess.hidden = false;
+      }
+    }
+  }
+
 })();

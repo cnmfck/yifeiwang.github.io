@@ -16,6 +16,8 @@ A bilingual (English / 中文) portfolio site for graduate applications, built w
 | `portfolio.html` | Portfolio 作品 | 10 projects with filters; each opens a detail window with facts and photos 10 个作品，可筛选，点开有详情和图集 |
 | `contact.html` | Contact 联系 | Statement on the left; contact card on the right: Queen’s email (preferred), personal email, phone, LinkedIn, location, with copy buttons 左侧标题，右侧联系卡片：皇后大学邮箱（首选）、个人邮箱、电话、LinkedIn、所在地，可一键复制 |
 | `qcssa.html` | QCSSA case study 宣传案例 | Mid-Autumn article in full inside a phone on a navy “moon” stage; Year of the Horse and White Dew side by side on themed stages; all 21 WeChat articles (covers pop out on hover); 8 graphic posts on a pinboard; 3 more Instagram posts; QCSSA’s official accounts. 中秋完整推送、马年与白露并排、21 篇推送、8 张图文海报、3 条 Instagram、官方账号 |
+| `cosplay.html` | Cosplay lookbook Cosplay 作品集 | Three looks, each in a section coloured after its shoot: Kita Ikuyo (night, red), Misa Amane (limestone, arched frame like Ontario Hall’s windows), Mizuki (deep-sea neon). Click any photo to open it full screen; arrows, arrow keys or swipe to move. 三套造型，每套的配色取自那组照片：喜多郁代（夜色、红）、弥海砂（石灰岩、仿 Ontario Hall 窗户的拱形相框）、水月（深海霓虹）。点任意照片全屏看大图，可用箭头、方向键或滑动切换。 |
+| `writing.html` | Film and media writing 电影与媒体写作 | The featured essay (culture jamming) on a dark “screen” band, the psychology concepts the essays use, all eight essays grouped by course with a one-paragraph summary, and the scholars read along the way. 精选文章（文化干扰）放在深色“银幕”区块，接着是文章里用到的心理学概念、按课程排列的八篇文章概要，以及读过的学者。 |
 | `404.html` | Not found 404 页 | Magazine "errata" page: a dashed cut-out with the 404, a link list of all pages, and an editor’s note with your photo and email. Works at any missing address and when opened locally. 杂志"勘误"风格：虚线剪切框里的 404、全站页面目录、带照片和邮箱的编者按；任何不存在的地址都能正常显示，本地打开也正常 |
 
 ## 2. Folder structure 目录结构
@@ -91,12 +93,14 @@ Drop JPG files with **exactly these names** into the folders below. No code chan
 | `assets/img/timeline/upath-booth.jpg` | UPATH outreach booth on Timeline (already added) 经历页 UPATH 宣传摊位（已放入） | 4:3 |
 | `assets/img/timeline/queens-psychology.jpg` | BA (Honours), Psychology on Timeline (already added) 经历页“心理学荣誉学士”（已放入） | 4:3 |
 | `assets/img/portfolio/seed-title.jpg`, `seed-case-1.jpg`, `seed-case-6.jpg` | Counselling course: pages from the phone-interview case document (already added) 心理咨询课程：电话面试案例文档的页面（已放入） | as is 原比例 |
-| **`assets/img/portfolio/uibe-01.jpg`** | **Still needed:** UIBE outreach card and Timeline **待补：**UIBE 推广卡片和经历页 | 4:5 |
-| **`assets/img/portfolio/recall-02.jpg`** | **Still needed:** chart from the recall study report (inside its dialog) **待补：**回忆实验报告里的图表（详情窗口内） | 4:3 |
-| `assets/img/portfolio/writing-01.jpg` | Film writing 电影写作 | 16:10 |
-| `assets/img/portfolio/cosplay-01.jpg` … `cosplay-06.jpg` | Cosplay (01 Kita Ikuyo, 02 Makima, 03 Power, 04 Reze, 05 Hatsune Miku, 06 Misa Amane) | 4:5 |
-| `assets/img/portfolio/makeup-01.jpg` … `makeup-03.jpg` | Makeup 化妆 | 4:3 or 4:5 |
-| `assets/img/portfolio/deadline-01.jpg`, `deadline-02.jpg` | DeADline band / rehearsal 乐队/排练 | 4:5 |
+| `assets/img/portfolio/uibe-01.jpg`, `uibe-02.jpg` | UIBE info session: snack table and gifts (already added) UIBE 宣讲会：零食桌和礼品（已放入） | 4:3 |
+| `assets/img/portfolio/recall-sheet-story.jpg` | Recall study: a completed story response sheet (already added) 回忆实验：填好的故事记录表（已放入） | as is 原比例 |
+| `assets/img/portfolio/writing-cover.jpg` | Film writing card cover, a typeset list of the eight essays (already added) 电影写作卡片封面，八篇文章的排版目录（已放入） | 4:5 |
+| `assets/img/cosplay/<look>-NN-m.jpg` and `-l.jpg` | Cosplay lookbook: `kita` (7), `misa` (7), `mizuki` (6). `-m` is about 900 px for the page, `-l` about 1800 px for the photo viewer. To add a photo, save both sizes with the next number and add it to `COS` in `build3.py`. Cosplay 作品集：`kita` 7 张、`misa` 7 张、`mizuki` 6 张。`-m` 约 900 像素用于页面，`-l` 约 1800 像素用于看大图。加新照片要两种尺寸都存，并在 `build3.py` 的 `COS` 里加一行。 | as shot 原比例 |
+| `assets/img/cosplay/more/<character>-NN-m.jpg` and `-l.jpg` | Other cosplay, shown together under Mizuki with no names on the page: Power with Denji (8), Reze (5), pink dress (2), Jolyne, Makima, Tomori (already added). Order follows `COS_MORE_NAMES` in `build3.py`. 其他 cosplay，在水月下面合并展示，页面上不显示角色名：帕瓦与电次 8 张、蕾塞 5 张、粉裙 2 张、徐伦、玛奇玛、高松灯各 1 张（已放入），顺序按 `build3.py` 的 `COS_MORE_NAMES`。 | as shot 原比例 |
+| `assets/img/portfolio/r-cover.jpg` | R study card cover: the four correlations with 95% CIs (already added) R 研究卡片封面：四个相关系数及 95% 置信区间（已放入） | 4:5 |
+| `assets/img/portfolio/makeup-01.jpg` … `makeup-03.jpg` | Makeup card (hidden for now: it lives in `HIDDEN_WORKS` in `build3.py`; move it back into `WORKS` to show it) 化妆卡片（暂时隐藏，在 `build3.py` 的 `HIDDEN_WORKS` 里，移回 `WORKS` 即可显示） | 4:3 or 4:5 |
+| `assets/img/portfolio/deadline-logo.png`, `deadline-plate.jpg`, `deadline-plate-tall.jpg` | DeADline logo (transparent) and the logo on navy for the card, dialog and Home stack (already added) 乐队 logo（透明底）及其深蓝底版本，用于卡片、详情窗口和首页（已放入） | 4:3 / 4:5 |
 
 Tips: long side about 1600 px, under 400 KB each (compress at squoosh.app). Photos are cropped to fill their frame, so keep faces near the centre. To change a caption, edit the `<figcaption>` in the hidden `.story-src` block at the bottom of `portfolio.html` and `timeline.html`.
 建议：长边约 1600 像素，每张 400 KB 以内。照片会裁切填满画框，人物尽量居中。图注在 `portfolio.html` 和 `timeline.html` 底部隐藏的 `.story-src` 区块里的 `<figcaption>` 修改。
@@ -119,6 +123,11 @@ The 2024 Spring Festival gala recap still has no WeChat link (its card says “N
 
 Timeline entries and Portfolio cards open the same window. Each story is written once per page in a hidden `<div class="story-src" id="src-…">`; anything with `data-story="…"` opens it, and `page.html#story-id` opens it directly. Stories shared by both pages: Japanese speech contest, CAS internship, QCSSA events, UIBE outreach, Immediate Recall Study, counselling course.
 经历页条目和作品卡片打开的是同一个详情窗口。每个故事在页面底部隐藏的 `.story-src` 里写一次，带 `data-story` 的按钮或图片会打开它，网址加 `#故事id` 也能直接打开。两页共用的有：日语比赛、中科院实习、QCSSA 活动、UIBE 推广、即时回忆实验、心理咨询课程。
+
+### 404 page 404 页面
+
+GitHub Pages serves `404.html` for every address on yifeiwang.cc that doesn’t exist, at any depth, with a real 404 status. The visitor keeps the address they typed, so the page shows it and suggests the closest real page (e.g. `/resume` → Timeline, `/cos` → Cosplay lookbook). A redirect to a fixed URL is deliberately not used: it would hide what was typed and report the missing page as found.
+GitHub Pages 会对 yifeiwang.cc 下所有不存在的地址（任何层级）返回 `404.html`，状态码是真正的 404。地址栏保留访客输入的地址，页面会显示这个地址并推荐最接近的页面（如 `/resume` → 经历，`/cos` → Cosplay 作品集）。没有改成跳转到固定网址，因为那样会丢掉访客输入的地址，搜索引擎也会把不存在的页面当成存在。
 
 ## 6. Other edits 其他修改
 
